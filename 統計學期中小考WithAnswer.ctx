@@ -1,0 +1,279 @@
+\documentclass[12pt,a4paper,fleqn,twoside]{article}
+\mathindent=1cm
+\textwidth=15.9cm
+\textheight=24cm
+\voffset=-1.5cm
+\hoffset=-0.28cm
+\oddsidemargin=0.4cm
+\evensidemargin=0.4cm
+\renewcommand{\textfraction}{0.15}
+\renewcommand{\topfraction}{0.85}
+\renewcommand{\bottomfraction}{0.65}
+\renewcommand{\floatpagefraction}{0.6}
+\renewcommand{\figurename}{\ctxfbb 圖}
+\renewcommand{\thesection}{\arabic{section}}
+\renewcommand{\today}{\number\year.\number\month.\number\day}
+{\renewcommand\baselinestretch{0.8}\selectfont
+\usepackage{enumerate}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\linespread{1.5}
+\usepackage{setspace}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage{color}
+\usepackage{tabularx}
+\usepackage{array}
+\newcounter{fillcounter}
+\setcounter{fillcounter}{1}
+\newcommand{\ansfill}{\;\underline{\hspace{0.3cm}({\arabic{fillcounter}})\hspace{0.3cm}}\addtocounter{fillcounter}{1} }
+\usepackage{tikz}
+\usepackage[us,12hr]{datetime}
+\usepackage[T1]{fontenc}
+\theoremstyle{definiiton}
+\newtheorem{thm}{Theorem}
+\newtheorem{lem}{Lemma}
+\newtheorem{defi}{Definition}
+\newtheorem{hyp}{Hypothesis}
+\newtheorem{Pro}{Proposition}
+\newtheorem{cla}{Claim}
+\newtheorem{cor}{Corollary}
+\newtheorem{fact}{Fact}
+\usepackage{environ}
+\newlength{\choiceslen}
+% 段落A1 %
+\newif\ifshowcorrect
+\newcounter{choices}
+\newcommand{\choicefinal}[1]{%
+\ifnum\value{choices}>0 \hfill\fi\egroup
+\hspace{0pt}%
+\hbox to\choiceslen
+\bgroup
+\stepcounter{choices}%
+\ifcase#1\relax
+(\Alph{choices})%
+\else
+\ifshowcorrect
+\expandafter\underline
+\fi
+{(\Alph{choices})}%
+\fi\space}
+\newcommand{\choicetemp}[1]{\stepcounter{choices}\space(\Alph{choices})\cr}
+% 段落A1 %
+\NewEnviron{choices}
+{\setcounter{choices}{0}%
+\let\choice\choicetemp
+\settowidth{\choiceslen}{\vbox{\halign{##\hfil\cr\BODY\crcr}}}
+\ifdim\choiceslen>.5\textwidth
+\setlength{\choiceslen}{\textwidth}%
+\else
+\ifdim\choiceslen>.25\textwidth
+\setlength{\choiceslen}{.5\textwidth}%
+\fi
+\fi
+\let\choice\choicefinal
+\setcounter{choices}{0}%
+\begin{flushleft}
+\bgroup\BODY\hfill\egroup
+\end{flushleft}}
+\newcommand\longch{\parbox[t]{0.92\linewidth}}
+\ctxff
+\rm
+
+\newenvironment{num}
+ {\leftmargini=6mm\leftmarginii=8mm
+  \begin{itemize}}{\end{itemize}}
+
+
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[LO]{\bullet 考試時間: 2021 年 4 月 9 日 8:10 - 10:00}
+\fancyfoot[CE,CO]{\thepage}
+\renewcommand{\headrulewidth}{0.3pt}
+\renewcommand{\footrulewidth}{0pt}
+
+\def\tb#1#2{\mathop{#1\vphantom{\min }}\limits_{\scriptstyle #2}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\begin{document}
+\begin{center}
+\Large {\bf 109 學年度第二學期統計學小考 1}
+\end{center} %%%%%%%%%%%%%%%%%%%%%%%%========================
+\begin{description}
+\item [\large{一、選擇題 (請選出一個最適當的答案) (60\%)}]
+\end{description}
+
+%%===============
+\begin{enumerate}
+\item 在母體變異數 $\sigma^{2}$ 未知，樣本為大樣本的情況下，樣本的抽樣分配可以 \ansfill 處理。
+但由於 $\sigma^{2}$ 未知，所以由 \ansfill 代替之。
+\begin{choices}
+\choice0 (1) t 分配, (2) $\mu$
+\choice1 {\color{red}(1) Z 分配, (2) $s^{2}$}
+\choice0 (1) Z 分配, (2) $n$
+\choice0 (1) Chebyshev's Theorem, (2) $s^{2}$
+\end{choices}
+%%===============================================
+\item 公司購入 25 箱蘋果，發現每箱的樣本標準差為 5 公斤，試估計母體變異數 99\% 之信賴區間。
+\begin{choices}
+\choice1 {\color{red}[13.17, 60.69]}
+\choice0 [16.18, 52.64]
+\choice0 [19.35, 66.38]
+\choice0 [14.32, 58.62]
+\end{choices}
+%%===============================================
+\item An economist is interested in studying the incomes of consumers in a country.
+The population standard deviation is known to be \$1,000.
+A random sample of 50 individuals resulted in a mean income of \$15,000.
+What total sample size would the economist need to use for a 95\% confidence interval if the width of the interval should not be more than \$100?
+\begin{choices}
+\choice0 $n = 385$
+\choice0 $n = 40$
+\choice0 $n = 20$
+\choice1 {\color{red}$n = 1537$}
+\end{choices}
+%%==================================================
+\item How many tissues should the Kimberly Clark Corporation package of Kleenex contain?
+Researchers determined that 60 tissues is the mean number of tissues used during a cold.
+Suppose a random sample of 100 Kleenex users yielded the following data on the number of tissues used during a cold: $\bar{X} = 52, S = 22$.
+What are the null and alternative hypotheses to determine if the number of tissues used during a cold is less than 60?
+\begin{choices}
+\choice0 $H_{0}: \mu \leq 60 \quad \mbox{and} \quad H_{1}: \mu > 60$
+\choice1 {\color{red}$H_{0}: \mu \geq 60 \quad \mbox{and} \quad H_{1}: \mu < 60$}
+\choice0 $H_{0}: \bar{X} \geq 60 \quad \mbox{and} \quad H_{1}: \bar{X} > 60$
+\choice0 $H_{0}: \bar{X} = 52 \quad \mbox{and} \quad H_{1}: \bar{X} \neq 60$
+\end{choices}
+%%==================================================
+\item Sales at a fast-food restaurant average \$6,000 per day.
+The restaurant decided to introduce an advertising campaign to increase daily sales.
+To determine the effectiveness of the advertising campaign, a sample of 49 days of sales were taken. 
+They found that the average daily sales were \$6,300 per day.
+From past history, the restaurant knew that its population standard deviation is about \$1,000. 
+If the level of significance is $0.025$, have sales increased as a result of the advertising campaign?
+\vspace{-1.5cm}
+\begin{choices}
+\choice0 Fail to reject the null hypothesis.
+\choice1 {\color{red}Reject the null hypothesis and conclude the mean is higher than \$6,000 per day.}
+\choice0 Reject the null hypothesis and conclude the mean is lower than \$6,000 per day.
+\choice0 Reject the null hypothesis and conclude that the mean is equal to \$6,000 per day.
+\end{choices}
+%%=====================================================
+\item A major department store chain is interested in estimating the mean amount its credit card customers spent on their first visit to the chain’s new store in the mall.
+Fifteen credit card accounts were randomly sampled and analyzed with the following results:
+$\bar{X} = \$50.50$ and $S = 20$.
+Construct a 95\% confidence interval for the mean amount its credit card customers spent on their first visit to the chain’s new store in the mall if the amount spent follows a normal distribution.
+\begin{choices}
+\choice0 $\$50.50 \pm \$9.09$
+\choice0 $\$50.50 \pm \$10.12$
+\choice0 $\$50.50 \pm \$11.00$
+\choice1 {\color{red}$\$50.50 \pm \$11.08$}
+\end{choices}
+%%==================================================
+\item When testing $H_{0}: \pi_{1} - \pi_{2} \geq 0$ versus $H_{1}: \pi_{1} - \pi_{2} < 0$,
+the observed value of the $Z$ test statistic was found to be  $-2.13$.
+The $p-value$ for this test is
+\begin{choices}
+\choice1 {\color{red}0.0166}
+\choice0 0.0332
+\choice0 0.9668
+\choice0 0.9834
+\end{choices}
+%%====================================================
+\item The average cost of tuition plus room and board for a small private liberal arts college is reported to be \$8,500 per term,
+but a financial administrator believes that the average cost is higher.
+A study conducted using 350 small liberal arts colleges showed that the average cost per term is \$8,745.
+The population standard deviation is \$1,200. Let $\alpha = 0.05$.
+What is the critical $z-value$ for this test?
+\begin{choices}
+\choice0 +1.960
+\choice0 -1.960
+\choice1 {\color{red}+1.645}
+\choice0 -1.645
+\end{choices}
+%%====================================================
+\item 行銷經理隨機訪問 100 位來店客人，其中有 60 人贊成促銷活動具吸引力，請問贊成比例的 95\% 信賴區間為何？
+\begin{choices}
+\choice0 [0.50, 0.60]
+\choice1 {\color{red}[0.50, 0.70]}
+\choice0 [0.59, 0.61]
+\choice0 [0.60, 0.70]
+\end{choices}
+%%====================================================
+\item 在顯著水準 $\alpha$ 之下，檢定 $H_{0}: \mu \geq 100$ v.s. $H_{1}: \mu < 100$。
+則當 $p-value$ 為多少時，會拒絕虛無假設？
+\begin{choices}
+\choice1 {\color{red}$< \alpha$}
+\choice0 $> \alpha$
+\choice0 $> \alpha/2$
+\choice0 $= 0.10$
+\end{choices}
+\end{enumerate}
+%%===========================================
+\begin{description}
+\item [\large{二、計算題 (40\%)}]
+\end{description}
+\begin{enumerate}
+\item 某航空公司為了加強空服人員禮儀，進行為期三天的訓練，為了解其成效，隨機訪問旅客做評分，
+假設兩母體皆為常態分配且兩母體變異數相等的情況下，試求 $\mu_{1} - \mu_{2}$ 之 95\% 信賴區間。 \\
+\\
+\begin{tabular}{lccc}
+\hline
+無訓練 & 有訓練 \\[-2pt]
+\hline
+$n_{1} = 12$ & $n_{2} = 12$ \\
+$\bar{x_{1}} = 74$ & $\bar{x_{2}} = 84$ \\
+$s_{1} = 7$ & $s_{2} = 4$ \\
+\hline
+\end{tabular}
+
+{\color{red}Ans: \\
+$s_{p} = \sqrt{\frac{(n_{1} - 1)s^{2}_{1} + (n_{2} - 1)s^{2}_{2}}{n_{1} + n_{2} - 2}} = \sqrt{\frac{11 \cdot 49 + 11 \cdot 16}{22}} = \sqrt{32.5} = 5.7$ \\
+$df = n_{1} + n_{2} - 2 = 12 + 12 - 2 = 22$ \\
+$(\bar{x_{1}} - \bar{x_{2}}) \pm t_{\frac{\alpha}{2}, 22} \cdot s_{p}\sqrt{\frac{1}{n_{1}} + \frac{1}{n_{2}}}$ \\
+$= -10 \pm 2.074 \cdot 5.7 \sqrt{\frac{1}{12} + \frac{1}{12}}$ \\
+$\Rightarrow [-14.83, -5.17]$}
+%%============================================
+\item 以下為關於生活在某個國家的成年男性與女性身高的獨立隨機樣本, 試求兩母體變異數比之 95\% 信賴區間。 \\
+\\
+\begin{tabular}{lccc}
+\hline
+男性 & 女性 \\[-2pt]
+\hline
+$n_{1} = 15$ & $n_{2} = 12$ \\
+$\bar{x_{1}} = 173$ & $\bar{x_{2}} = 162$ \\
+$s_{1} = 5$ & $s_{2} = 6$ \\
+\hline
+\end{tabular}
+
+{\color{red}Ans: \\
+假設兩母體皆為常態分配, }\\
+{\color{red} $F = \frac{s^{2}_{1}/\sigma^{2}_{1}}{s^{2}_{2}/\sigma^{2}_{2}} = \frac{s^{2}_{1}\sigma^{2}_{2}}{s^{2}_{2}\sigma^{2}_{1}} ~ F_{(n_{1}-1, n_{2}-1)}$} \\
+{\color{red} $P(F_{1-\alpha/2(n_{1}-1, n_{2}-1)} \leq \frac{s^{2}_{1}\sigma^{2}_{2}}{s^{2}_{2}\sigma^{2}_{1}} \leq F_{\alpha/2(n_{1}-1, n_{2}-1)}) = 1 - \alpha$ } \\
+{\color{red} $P(\frac{s^{2}_{1}}{s^{2}_{2}}\cdot\frac{1}{F_{\alpha/2(n_{1}-1, n_{2}-1)}} \leq \frac{\sigma^{2}_{1}}{\sigma^{2}_{2}} \leq \frac{s^{2}_{1}}{s^{2}_{2}}\cdot\frac{1}{F_{1-\alpha/2(n_{1}-1, n_{2}-1)}}) = 1-\alpha$ } \\
+{\color{red} $\frac{25}{36}\cdot\frac{1}{F_{0.025(14, 11)}} \leq \frac{\sigma^{2}_{1}}{\sigma^{2}_{2}} \leq \frac{25}{36}\cdot F_{0.025(11, 14)}$ \\
+$\Rightarrow [0.2067, 2.1458]$}
+%%============================================
+\item Suppose 1,600 of 2,000 registered voters sampled said they planned to vote for the Republican candidate for president.
+Using the 0.95 confidence level, what is the interval estimate for the population proportion? \\
+{\color{red}Ans: \\
+假設樣本大小已足夠大, 根據中央極限定理, 適用 $Z$ 分配來估計母體比例的信賴區間。 \\
+$\hat{p} = 1,600/2,000 = 0.8$, $\hat{p} \pm Z_{\alpha/2}\sqrt{\frac{\hat{p}(1 - \hat{p})}{n}}$ \\
+$= 0.8 \pm 1.96\sqrt{\frac{0.8(1-0.8)}{2000}} = 0.8 \pm 0.0175$ \\
+$\Rightarrow [0.7825, 0.8175]$}
+%%============================================
+\item 某白米廠的白米每包標示為 5 公斤，其經銷商進一批白米，經抽取 36 包，
+檢測得出樣本平均數 $\bar{x} = 4.86$，標準差 $s = 0.54$。
+若白米平均重量小於 5 公斤, 則經銷商會拒收。
+經銷商想以統計方法來決定是否收下該批白米（$\alpha = 0.05$）。 \\
+(a) 請寫出其虛無假設及對立假設; (b) 假設樣本已足夠大，請計算檢定統計量; \\
+(c) 請畫出其拒絕區域; (d) 請寫出檢定結果, 並下結論 \\
+{\color{red}Ans: \\
+(a) $H_{0}: \mu \geq 5; H_{1}: \mu < 5$ \\
+(b) 假設樣本已足夠大, 根據中央極限定理, 適用 $Z$ 分配來估計母體平均數的信賴區間。 \\
+$Z = \frac{\bar{x} - \mu}{s/\sqrt{n}} = \frac{4.86 - 5}{0.54/\sqrt{36}} = -1.556$ \\
+(c) \\
+\includegraphics[width=6.5cm, height=3.5cm]{rr} \\
+(d) 根據樣本資訊並未顯示該批白米平均重量小於 5 公斤, 故不拒絕 $H_{0}$, 接受該批白米。}
+\end{enumerate}
+\end{document}
